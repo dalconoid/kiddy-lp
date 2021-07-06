@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  lines-provider:
+    image: antonboom/lines-provider
+    restart: always
+    ports:
+      - 8000:8000
+
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - 6379:6379
+
+  kiddy-lp:
+    build: .
+    restart: always
+    ports:
+      - 8080:8080
+      - 8081:8081
+    environment:
+      HTTP_PORT: "8080"
+      GRPC_PORT: "8081"
+      LP_ADDRESS: "http://lines-provider:8000"
+      STORAGE: "redis:6379"
+      STORAGE_PASSWORD: ""
+      B_TIME: "1"
+      F_TIME: "1"
+      S_TIME: "1"
+    depends_on:
+      - lines-provider
+      - redis
+

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/dalconoid/line-processor/kiddy-lp/api";
+
+service Kiddy {
+    rpc SubscribeOnSportsLines(stream SubscribeRequest) returns (stream LinesDeltas) {}
+}
+
+message SubscribeRequest {
+    repeated string lines = 1;
+    double time = 2;
+}
+
+message LinesDeltas {
+    map<string, double> linesDeltas = 1;
+}
+
