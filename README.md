@@ -1,7 +1,7 @@
 # balance-service
 ***
 ## HTTP Server:
-###Ручки:
+### Ручки:
 + Проверка соединения сервиса с базой данных и первичной синхронизации с линиями:  
   Request: **[GET] /ready**
 
@@ -12,9 +12,9 @@ Response:
 500
 </pre>
 
-##GRPC Server:
+## GRPC Server:
 **_api/kiddy.proto_**
-###Пример:
+### Пример:
 **Request**
 <pre>
   call SubscribeOnSportsLines
